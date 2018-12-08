@@ -1,0 +1,101 @@
+﻿@using WebHelpers.Mvc5
+<aside class="main-sidebar">
+    <section class="sidebar">
+        @* BEGIN Search *@
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Buscar...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+        @* END Search *@
+        @* BEGIN Menu *@
+        @if (User.Identity.IsAuthenticated && User.IsInRole("ADMINISTRADOR"))
+        {
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">Gestiones</li>
+                @*<li class="@Url.IsLinkActive("Index", "Home")">
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-link"></i> <span>Home</span></a>
+                </li>
+                <li class="@Url.IsLinkActive("AnotherLink", "Home")">
+                    <a href="@Url.Action("AnotherLink", "Home")"><i class="fa fa-link"></i> <span>Another Link</span></a>
+                </li>*@
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-link"></i> <span>Gestión Usuarios</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="@Url.Action("BandejaUsuarios", "GestionUsuarios", new { area = ""})">Bandeja Usuarios</a></li>
+                        <li><a href="@Url.Action("CrearUsuarioSistema","GestionUsuarios", new { area = ""})">Crear Usuario</a></li>
+                        @*<li><a href="#">Tipo Persona</a></li>
+                        <li><a href="#">Institución</a></li>*@
+                    </ul>
+                </li>
+            </ul>
+        }
+
+        @if (User.Identity.IsAuthenticated && User.IsInRole("PROFESOR"))
+        {
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">Gestiones Profesor</li>
+                @*<li class="@Url.IsLinkActive("Index", "Home")">
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-link"></i> <span>Home</span></a>
+                </li>
+                <li class="@Url.IsLinkActive("AnotherLink", "Home")">
+                    <a href="@Url.Action("AnotherLink", "Home")"><i class="fa fa-link"></i> <span>Another Link</span></a>
+                </li>*@
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-link"></i> <span>Gestión</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="@Url.Action("BandejaUsuarios", "GestionUsuarios", new { area = ""})">Bandeja Estudiantes</a></li>
+                        <li><a href="@Url.Action("CrearUsuarioSistema","GestionUsuarios", new { area = ""})">Bandeja Notas</a></li>
+                        @*<li><a href="#">Tipo Persona</a></li>
+                        <li><a href="#">Institución</a></li>*@
+                    </ul>
+                </li>
+            </ul>
+        }
+
+
+        @if (User.Identity.IsAuthenticated && User.IsInRole("ESTUDIANTE"))
+        {
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">Acciones alumnos</li>
+                @*<li class="@Url.IsLinkActive("Index", "Home")">
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-link"></i> <span>Home</span></a>
+                </li>
+                <li class="@Url.IsLinkActive("AnotherLink", "Home")">
+                    <a href="@Url.Action("AnotherLink", "Home")"><i class="fa fa-link"></i> <span>Another Link</span></a>
+                </li>*@
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-link"></i> <span>Gestion</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="@Url.Action("BandejaUsuarios", "GestionUsuarios", new { area = ""})">Revisar notas</a></li>
+                        <li><a href="@Url.Action("CrearUsuarioSistema","GestionUsuarios", new { area = ""})">Reviar mi avatar</a></li>
+                        @*<li><a href="#">Tipo Persona</a></li>
+                        <li><a href="#">Institución</a></li>*@
+                    </ul>
+                </li>
+            </ul>
+        }
+
+        @* END Menu *@
+    </section>
+</aside>
